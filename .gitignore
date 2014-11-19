@@ -1,0 +1,2 @@
+# Ne pas commit le dossier de PHPSTORM
+.idea/*
