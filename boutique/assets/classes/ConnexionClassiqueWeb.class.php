@@ -6,7 +6,7 @@ class ConnexionClassiqueWeb{
 
     public function __construct(){
         try{
-            $_PDO = new PDO("sqlsrv:Server=INFO-SIMPLET;Database=Classique_Web","ETD","ETD",array(PDO::ATTR_PERSISTENT => false));
+            $this->_PDO = new PDO("sqlsrv:Server=INFO-SIMPLET;Database=Classique_Web","ETD","ETD",array(PDO::ATTR_PERSISTENT => false));
         }
         catch(Exception $e){
             print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -15,6 +15,10 @@ class ConnexionClassiqueWeb{
         $this->_etat = true;
     }
 
+    public function getPDO(){
+        return $this->_PDO;
+    }
+    
     public function etatConnexion(){
         if($this->_etat){
             echo "<kbd>La connexion à la base a <span style=\"color:green;\">réussie</span>.</kbd>";
