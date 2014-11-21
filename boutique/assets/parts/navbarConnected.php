@@ -14,9 +14,9 @@
                 <li><a href="#">Panier</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mon compte<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $_SESSION['pseudo'];?><span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Se déconnecter</a>
+                        <li><a href="index.php?action=deconnexion">Se déconnecter</a>
                         </li>
                         <li><a href="#">Aide</a>
                         </li>

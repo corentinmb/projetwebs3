@@ -1,20 +1,18 @@
-
-<?php 
-/* SUIVI DE SESSION */ 
-
-
-?>
-
+<?php include("assets/parts/session.php");?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
    <!-- IMPORT HEAD -->
     <?php include("assets/parts/head.php");?>
+    <?php include("assets/parts/javascriptImports.php");?>
   </head>
   <body>
     <!-- IMPORT NAVBAR -->
-    <?php include("assets/parts/navbarConnection.php");?>
-
+    <?php if(isset($_SESSION['connected']) && $_SESSION['connected'] == true)
+            include("assets/parts/navbarConnected.php");
+          else
+            include("assets/parts/navbarConnection.php");  
+          ?>
 
     <div class="container-fluid">
       <div class="row">
@@ -57,6 +55,5 @@
         </div>
       </div>
     </div>
-    <?php include("assets/parts/javascriptImports.php");?>
   </body>
 </html>
