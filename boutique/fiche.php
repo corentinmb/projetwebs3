@@ -18,25 +18,24 @@
       <div class="row">
             <?php include("assets/parts/menu.php");?>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Les artistes <br/><small>compositeurs, musiciens, auteurs...</small></h1>
-          <div class="table-responsive">
 
-             <form method="post" style="display:inline-block;" class="form-inline">
-  <input  type="text" class="form-control" name="texteRecherche" autofocus/>
-  <button type="submit" class="btn btn-default">Rechercher d'un artiste</button>
-</form>
             <?php 
                 
                 require 'assets/classes/ConnexionClassiqueWeb.class.php';
                 $maConnexion = new ConnexionClassiqueWeb();
-                if(isset($artiste=$_GET['artiste']))
-                  $req=$maConnexion->getPDO()->query('SELECT Nom_Musicien from Musicien WHERE Nom_Musicien LIKE "'.$artiste.'%"');
-           
-                while ($data = $req->fetch()) {
-                  echo '<h1>'.$data['Nom_Musicien'].'</h1>';
+                if(isset($_GET['artiste'])){
+                  $artiste=$_GET['artiste'];
+                  $req=$maConnexion->getPDO()->query("SELECT Nom_Musicien from Musicien WHERE Nom_Musicien LIKE '".$artiste."%'");
                 }
-
             ?>
+            <h1 class="page-header">
+            <?php 
+              $data=$req->fetch();
+              echo '<h1>'.$data['Nom_Musicien'].'</h1>'; 
+            ?>
+            <br/>
+            <small>ICI ECHO SI C'EST UN COMPOSITEUR, MUSICIEN...</small></h1>
+            <div class="table-responsive">
 
 
           </div>

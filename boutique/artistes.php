@@ -46,7 +46,7 @@
               <tbody>
             <?php
                 while ($data = $req->fetch()) {
-                  echo '<tr><td><a href="">'.$data['Nom_Musicien'].'</a></td></tr>';
+                  echo '<tr><td><a href="fiche.php?artiste='.$data['Nom_Musicien'].'">'.$data['Nom_Musicien'].'</a></td></tr>';
                 }
               ?>
               </tbody>
