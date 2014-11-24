@@ -26,31 +26,19 @@
   <button type="submit" class="btn btn-default">Rechercher d'un artiste</button>
 </form>
             <?php 
-              
+                
                 require 'assets/classes/ConnexionClassiqueWeb.class.php';
                 $maConnexion = new ConnexionClassiqueWeb();
-                // $maConnexion->etatConnexion();
-                if(isset($_POST['texteRecherche'])){
-                  $rech=$_POST['texteRecherche'];
-                  $req=$maConnexion->getPDO()->query("SELECT Nom_Musicien from Musicien WHERE Nom_Musicien LIKE '".$rech."%'");
-                }
-                else
-                  $req=$maConnexion->getPDO()->query('SELECT Nom_Musicien from Musicien');
-            ?>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Nom du Musicien</th>
-                </tr>
-              </thead>
-              <tbody>
-            <?php
+                if(isset($artiste=$_GET['artiste']))
+                  $req=$maConnexion->getPDO()->query('SELECT Nom_Musicien from Musicien WHERE Nom_Musicien LIKE "'.$artiste.'%"');
+           
                 while ($data = $req->fetch()) {
-                  echo '<tr><td><a href="">'.$data['Nom_Musicien'].'</a></td></tr>';
+                  echo '<h1>'.$data['Nom_Musicien'].'</h1>';
                 }
-              ?>
-              </tbody>
-            </table>
+
+            ?>
+
+
           </div>
         </div>
       </div>
